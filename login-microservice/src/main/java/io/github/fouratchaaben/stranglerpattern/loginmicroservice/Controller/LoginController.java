@@ -16,24 +16,4 @@ public class LoginController {
         }
     }
 
-    //TODO: Move the functionalities to their respective Microservices.
-    @PostMapping(value = "/send")
-    public String sendTweet(@RequestBody Tweet tweet) {
-        return "The tweet is sent";
-    }
-
-    @DeleteMapping("/delete")
-    public String deleteTweet(@RequestBody Tweet tweet) {
-        return "The tweet: \n'''" + tweet.getBody() + "'''\nis deleted";
-    }
-
-    @PostMapping("/follow")
-    public String follow(@RequestBody User user) {
-        return user.getUserName() + " is followed!";
-    }
-
-    @DeleteMapping("/unfollow")
-    public String unfollow(@RequestBody User user) {
-        return user.getUserName() + " is unfollowed!";
-    }
 }
