@@ -1,0 +1,4 @@
+rootProject.name = 'strangler-pattern-refactor'
+include 'follow-microservice'
+include 'tweet-microservice'
+include 'login-microservice'
