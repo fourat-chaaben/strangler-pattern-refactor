@@ -20,40 +20,34 @@ public class Client {
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<User> requestEntity = new HttpEntity<>(user, headers);
         ResponseEntity<String> responseEntity = restTemplate.postForEntity(loginMicroserviceURL + "/performLogin", requestEntity, String.class);
-
         return responseEntity.getBody();
     }
 
-    //TODO: Change the url endpoints from loginMicroservice to respective microservice for below methods.
     public String sendTweet(Tweet tweet) {
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<Tweet> requestEntity = new HttpEntity<>(tweet, headers);
-        ResponseEntity<String> responseEntity = restTemplate.postForEntity(loginMicroserviceURL + "/send", requestEntity, String.class);
-
+        ResponseEntity<String> responseEntity = restTemplate.postForEntity(tweetMicroserviceURL + "/send", requestEntity, String.class);
         return responseEntity.getBody();
     }
 
     public String deleteTweet(Tweet tweet) {
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<Tweet> requestEntity = new HttpEntity<>(tweet, headers);
-        ResponseEntity<String> responseEntity = restTemplate.exchange(loginMicroserviceURL + "/delete", HttpMethod.DELETE, requestEntity, String.class);
-
+        ResponseEntity<String> responseEntity = restTemplate.exchange(tweetMicroserviceURL + "/delete", HttpMethod.DELETE, requestEntity, String.class);
         return responseEntity.getBody();
     }
 
     public String follow(User user) {
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<User> requestEntity = new HttpEntity<>(user, headers);
-        ResponseEntity<String> responseEntity = restTemplate.postForEntity(loginMicroserviceURL + "/follow", requestEntity, String.class);
-
+        ResponseEntity<String> responseEntity = restTemplate.postForEntity(followMicroserviceURL + "/follow", requestEntity, String.class);
         return responseEntity.getBody();
     }
 
     public String unfollow(User user) {
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<User> requestEntity = new HttpEntity<>(user, headers);
-        ResponseEntity<String> responseEntity = restTemplate.exchange(loginMicroserviceURL + "/unfollow", HttpMethod.DELETE, requestEntity, String.class);
-
+        ResponseEntity<String> responseEntity = restTemplate.exchange(followMicroserviceURL + "/unfollow", HttpMethod.DELETE, requestEntity, String.class);
         return responseEntity.getBody();
     }
 
